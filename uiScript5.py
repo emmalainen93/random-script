@@ -9,6 +9,7 @@ reload(ms)
 def listPlaceables(*args): #wants *args, but does not need to use it
     print 'Listing placeables' #'%s' %(args, )
     #put placeables in list
+    global placeables
     placeables=[]
     placeables = ms.listPlaceables()
     placeableList.append(placeables)
@@ -17,6 +18,7 @@ def listPlaceables(*args): #wants *args, but does not need to use it
 def listWalls(*args):
     print 'Listing walls'
     #put walls in list
+    global walls
     walls=[]
     walls = ms.listWalls()
     wallsList.append(walls)
@@ -25,16 +27,19 @@ def listWalls(*args):
 def listPlacedMeshes(*args):
     print'Listing already placed meshes'
     #put placed meshes in list
+    global placed
     placed=[]
     placed = ms.listPlaced()
     placedList.append(placed)
 
 def sliderNr(value):
+    global nr
+    nr=[]
     ms.setNr(value)
 
 def placeRandom(*args):
     print'place radom meshes'
-    ms.placeRandom()
+    ms.placeRandom(placeables, walls, placed, nr)
 
 
 
